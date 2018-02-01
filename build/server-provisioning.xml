@@ -21,6 +21,16 @@
   -->
 <server-provisioning xmlns="urn:wildfly:server-provisioning:1.0">
     <feature-packs>
-        <feature-pack groupId="org.wildfly" artifactId="wildfly-feature-pack" version="${project.version}"/>
+        <feature-pack groupId="org.wildfly" artifactId="wildfly-feature-pack" version="${project.version}">
+            <contents>
+                <filter pattern="copyright.txt" include="false"/>
+                <filter pattern="README.txt" include="false"/>
+            </contents>
+        </feature-pack>
+        <feature-pack groupId="org.jboss.migration" artifactId="jboss-server-migration-eap7.1-feature-pack" version="${version.org.jboss.migration}" />
     </feature-packs>
+    <version-overrides>
+        <!-- enforce all feature packs refer to the correct widlfly core feature pack version -->
+        <version-override groupId="org.wildfly.core" artifactId="wildfly-core-feature-pack" version="${version.org.wildfly.core}" extension="zip" />
+    </version-overrides>
 </server-provisioning>

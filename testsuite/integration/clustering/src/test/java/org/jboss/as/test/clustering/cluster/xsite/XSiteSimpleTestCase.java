@@ -116,14 +116,6 @@ public class XSiteSimpleTestCase extends AbstractClusteringTestCase {
         return war;
     }
 
-    @BeforeClass
-    public static void beforeClass() {
-        AccessController.doPrivileged((PrivilegedAction<Void>) () -> {
-            Assume.assumeFalse("Disable on Windows+IPv6 until CI environment is fixed", Util.checkForWindows() && (Util.getIpStackType() == StackType.IPv6));
-            return null;
-        });
-    }
-
     @Test
     public void test(@ArquillianResource(CacheAccessServlet.class) @OperateOnDeployment(DEPLOYMENT_1) URL baseURL1,
                      @ArquillianResource(CacheAccessServlet.class) @OperateOnDeployment(DEPLOYMENT_2) URL baseURL2,

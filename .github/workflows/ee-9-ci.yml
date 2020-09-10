@@ -16,8 +16,7 @@ jobs:
         version: 8    
     - name: Build
       run: |
-        mvn -U -B -DskipTests -Drelease install
-        cd ee-9 && mvn -U -B -DskipTests -Drelease install
+        mvn -U -B -DskipTests -Dts.ee9 install
     - name: Tar Maven Repo
       shell: bash
       run: tar -czf maven-repo.tgz -C ~ .m2/repository
